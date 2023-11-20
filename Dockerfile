@@ -4,6 +4,6 @@ COPY mvnw .
 COPY pom.xml .
 COPY .mvn .mvn
 COPY src src
-RUN  ./mvnw package
+RUN  ./mvn package
 COPY target/*jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
