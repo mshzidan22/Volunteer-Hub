@@ -29,6 +29,7 @@ public class UserController {
         return new ResponseEntity<>(conv.toUserInfoDto(userService.getUserById(id)) ,HttpStatus.OK);
     }
 
+
     private User getCurrentUser(){
         Account principal = (Account) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return principal.getUser();

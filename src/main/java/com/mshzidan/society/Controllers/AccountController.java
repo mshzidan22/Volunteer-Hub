@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/account")
 public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/signup")
+    @PostMapping("/api/account/signup")
     public ResponseEntity<Void> createUser(@RequestBody @Valid UserAccountSignUPDto userAccountSignUPDto){
         accountService.createAccount(userAccountSignUPDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -24,11 +23,18 @@ public class AccountController {
     }
 
     @PreAuthorize("#accountId == principal.id")
-    @PutMapping("/edit/{accountId}")
+    @PutMapping("/api/account/edit/{accountId}")
     public ResponseEntity<Void> updateUser(@RequestBody @Valid UserAccountSignUPDto userAccountSignUPDto,@PathVariable Integer accountId){
         accountService.updateAccount(userAccountSignUPDto,accountId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("")
+    public ResponseEntity<String> successfulLogin(){
+        return new ResponseEntity<String>("Welcome",HttpStatus.OK);
+    }
+
+
 
 
 
