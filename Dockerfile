@@ -1,10 +1,12 @@
-# Use an OpenJDK 8 runtime as a base image
-FROM openjdk:8-jre-alpine
-# Set the working directory in the container
-WORKDIR /app
-# Copy the JAR file into the container
-COPY target/*.jar /app/volunteer-hub.jar
-# Expose the port that your Spring Boot application will run on
+FROM maven:3.6.3-jdk-8-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+#
+# Package stage
+#
+FROM maven:3.6.3-jdk-8-slim
+COPY --from=build /home/app/target/*.jar  /usr/local/lib/volunteer-hub.jar
 EXPOSE 8080
-# Specify the default command to run your application
-CMD ["java", "-jar", "volunteer-hub.jar"]
+ENTRYPOINT ["java","-jar","/usr/local/lib/volunteer-hub.jar"]
