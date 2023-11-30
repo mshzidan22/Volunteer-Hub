@@ -61,8 +61,8 @@
 -- VALUES ('10', '25', '2023-12-22 11:55:00.000', 'Initiative ten: Together for a greener planet', 'Green Initiative X', 'Denied', '4');
 
 
-insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','2');
-insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','3');
-insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','4');
+--insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','2');
+--insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','3');
+--insert into initiative_volunteers (volunteering_jobs_id,volunteers_id) values ('5','4');
 
 
